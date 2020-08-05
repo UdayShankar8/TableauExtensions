@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SpeechToText_TextToSpeech</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Extensions</title>`
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="../../lib/tableau.extensions.1.latest.js"></script>
+        <script src="./HelloExt.js"></script>
+     
+        
+
+    </head>
+    <body>
+        <div class="container">
+
+            
+
+            <div class="app"> 
+                <h3>Keywords</h3>
+                <div class="input-single">
+                    <textarea id="note-textarea" placeholder="Enter Keywords" rows="6"></textarea>
+                </div>         
+               <!--  <button id="start-record-btn" style="background-color: #007bff" title="Start Recording">Start Listening</button>
+                <button id="pause-record-btn" style="background-color: #007bff" title="Pause Recording">Stop Listening</button> -->
+                <button id="save-note-btn" style="background-color: #007bff" title="Save Note">Save</button>   
+                <p id="resultBox" class="lead">Not Initialized</p>
+                <button id="initializeButton" class="btn btn-primary">Initialize Extensions API</button>
+
+                <p id="recording-instructions">Press the button to <strong>Save Keywords</strong></p>
+                
+                <h3>Saved Notes</h3>
+                <ul id="notes">
+                    <li>
+                        <p class="no-notes">You don't have any notes.</p>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script1.js"></script>
+        <script src="../../lib/tableau.extensions.1.latest.js"></script>
+        <script src="./HelloExt.js"></script>
+     
+
+        <!-- Only used for the demos ads. Please ignore and remove. --> 
+        <!-- <script src="https://cdn.tutorialzine.com/misc/enhance/v3.js" async></script> -->
+
+    </body>
+</html>
+
+

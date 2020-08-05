@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Hello Extensions</title>`
+
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+     <link rel="stylesheet" href="styles.css">
+
+     <!-- Bootstrap -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+     <!-- Tableau Extensions API Library  -->
+     <!-- library is in the /lib directory -->
+     <script src="../../lib/tableau.extensions.1.latest.js"></script>
+  
+
+     <!-- Your JavaScript code that uses the Extensions API goes here -->
+     <script src="./HelloExt.js"></script>
+     <script src="./script.js"></script>
+     <script src="./annyang.min.js"></script>
+       
+     <script>
+     if (annyang) {
+
+        // define the functions our commands will run.
+        var hello = function() {
+        $("#hello").slideDown("slow");
+        scrollTo("#section_hello");
+        };
+    
+        // define our commands.
+        // * The key is the phrase you want your users to say.
+        // * The value is the action to do.
+        //   You can pass a function, a function name (as a string), or write your function as part of the commands object.
+        var commands = {
+            'hello (there)':        hello,
+        }
+        
+        // OPTIONAL: activate debug mode for detailed logging in the console
+        annyang.debug();
+    
+        // Add voice commands to respond to
+        annyang.addCommands(commands);
+    
+        // OPTIONAL: Set a language for speech recognition (defaults to English)
+        // For a full list of language codes, see the documentation:
+        // https://github.com/TalAter/annyang/blob/master/docs/FAQ.md#what-languages-are-supported
+        annyang.setLanguage('en');
+
+        annyang.start();
+}     else {
+        $(document).ready(function() {
+            $('#unsupported').fadeIn('fast');
+    });
+}
+var scrollTo = function(identifier, speed) {
+    $('html, body').animate({
+        scrollTop: $(identifier).offset().top
+    }, speed || 1000);
+}
+</script>
+
+</head>
+     <body>
+       <div class="container">
+         <div>
+           <h1>Hello Extensions!</h1>
+           <p id="resultBox" class="lead">Not Initialized</p>
+           <button id="initializeButton" class="btn btn-primary">Initialize Extensions API</button>
+
+            <div class="app"> 
+                <h3>KeyWords</h3>
+                <div class="input-single">
+                    <textarea id="note-textarea" placeholder="Type the Keywords." rows="6"></textarea>
+                </div>         
+                <!-- <button id="start-record-btn" title="Start Recording">Start Recognition</button>
+                <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button> -->
+                <button id="save-note-btn" title="Save Note">Save Note</button>   
+                <!-- <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
+                        -->
+                    <section id="section_hello">
+                        <!-- <p><em>Go ahead, try it&hellip;</em></p> -->
+                        <p class="voice_instructions">Say "Hello!"</p>
+                        <p id="hello" class="hidden">Annyang!</p>
+                    </section>
+                   
+                <h3>My Notes</h3>
+                <ul id="notes">
+                    <li>
+                        <p class="no-notes">You don't have any notes.</p>
+                    </li>
+                </ul>
+             </div>  
+            </div>
+         </div>
+       </div>
+     </body>
+ </html>
